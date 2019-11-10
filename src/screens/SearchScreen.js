@@ -5,12 +5,13 @@ import SearchBar from '../components/SearchBar';
 import ResultsList from '../components/ResultsList';
 
 import useResults from '../hooks/useResults';
+import Loader from '../components/Loader';
 
 const SearchScreen  = () => {
     const [term, setTerm] = useState('');
     const [searchApi, results, errorMessage] = useResults();
 
-    console.log(results);
+    // console.log(results);
 
     const filterResultsByPrice = (price) => {
         // price === '$' || '$$' || '$$$'
@@ -18,6 +19,8 @@ const SearchScreen  = () => {
             return result.price === price;
         })
     }
+
+    
 
     return (
         <View style={{ flex: 1 }}>
@@ -27,6 +30,10 @@ const SearchScreen  = () => {
                 onTermSubmit={() => searchApi(term)}
             />
             {/* <Text>We have found {results.length} results</Text> */}
+            {
+                !results.length
+                  ? <Loader />
+                  : 
             <ScrollView>
                 <ResultsList 
                     results={filterResultsByPrice('$')}
@@ -41,6 +48,7 @@ const SearchScreen  = () => {
                     title="Big Spender!"
                 />
             </ScrollView>
+            }
         </View>
     )
 }
