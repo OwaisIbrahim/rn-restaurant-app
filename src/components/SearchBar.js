@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         margin: 15,
         height: 50,
         flexDirection: 'row',
+        marginBottom: 10,
         // alignItems: 'center',
 
         //Shadow
