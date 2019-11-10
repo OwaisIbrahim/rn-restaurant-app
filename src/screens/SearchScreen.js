@@ -32,22 +32,23 @@ const SearchScreen  = () => {
             {/* <Text>We have found {results.length} results</Text> */}
             {
                 !results.length
-                  ? <Loader />
-                  : 
-            <ScrollView>
-                <ResultsList 
-                    results={filterResultsByPrice('$')}
-                    title="Cost Effective"
-                />
-                <ResultsList 
-                    results={filterResultsByPrice('$$')}
-                    title="Big Pricier"
-                />
-                <ResultsList 
-                    results={filterResultsByPrice('$$$')}
-                    title="Big Spender!"
-                />
-            </ScrollView>
+                    ? <Loader />
+                    : (
+                    <ScrollView>
+                        <ResultsList 
+                            results={filterResultsByPrice('$')}
+                            title="Cost Effective"
+                        />
+                        <ResultsList 
+                            results={filterResultsByPrice('$$')}
+                            title="Big Pricier"
+                        />
+                        <ResultsList 
+                            results={filterResultsByPrice('$$$')}
+                            title="Big Spender!"
+                        />
+                    </ScrollView>
+                )
             }
         </View>
     )

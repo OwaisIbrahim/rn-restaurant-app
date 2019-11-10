@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Flatlist, Image } from 'react-native';
 import yelp from '../api/yelp';
 import { FlatList } from 'react-native-gesture-handler';
+import Loader from '../components/Loader';
 
 const ResultsShowScreen = ({ navigation }) => {
     const [result, setResult] = useState(null);
@@ -19,7 +20,7 @@ const ResultsShowScreen = ({ navigation }) => {
         getResult(id);
     }, []);
 
-    if(!result) return null;
+    if(!result) return <Loader />;
 
     return (
         <View>
